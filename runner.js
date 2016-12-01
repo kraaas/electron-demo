@@ -7,7 +7,7 @@ const YELLOW = '\x1b[33m'
 const BLUE = '\x1b[34m'
 const END = '\x1b[0m'
 
-const isElectronOpen = false
+let isElectronOpen = false
 
 let children = []
 
@@ -30,10 +30,8 @@ function run (command, color, name) {
       isElectronOpen = true
     }
   })
-
   child.stderr.on('data', data => console.error(format(name, data, color)))
   child.on('exit', code => exit(code))
-
   children.push(child)
 }
 

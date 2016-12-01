@@ -2,6 +2,7 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const settings = require('./config')
 
 let config = {
   devtool: '#eval-source-map',
@@ -16,14 +17,7 @@ let config = {
     path: path.join(__dirname, 'dist')
   },
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      loader: 'eslint-loader',
-      exclude: /node_modules/
-    }, {
-      test: /\.vue$/,
-      loader: 'eslint-loader'
-    }],
+    preLoaders: [],
     loaders: [{
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
@@ -73,6 +67,23 @@ let config = {
       sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
       scss: 'vue-style-loader!css-loader!sass-loader'
     }
+  }
+}
+
+// enable eslint in devepment
+if (process.env.NODE_ENV !== 'production') {
+  if (settings.eslint) {
+    config.module.preLoaders.push(
+      {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.vue$/,
+        loader: 'eslint-loader'
+      }
+    )
   }
 }
 

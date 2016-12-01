@@ -12,7 +12,7 @@ let config = {
   eslint: true,
 
   // webpack-dev-server port
-  port: 8085,
+  port: 8086,
 
   // electron-packager options
   // Docs: https://simulatedgreg.gitbooks.io/electron-vue/content/docs/building_your_app.html

@@ -1,7 +1,7 @@
 <template>
-	<header class="header">
-		{{title}}
-	</header>
+	<section class="container">
+		<h1>{{title}}</h1>
+	</section>
 </template>
 <script>
 export default {
@@ -12,12 +12,11 @@ export default {
 	}
 }
 </script>
-<style>
-.header {
-	width: 100%;
-	height: 40px;
-	line-height: 40px;
-	text-align: center;
-	border-bottom: 1px solid #dedede;
-}
+<style lang="sass">
+	.container {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+	}
 </style>

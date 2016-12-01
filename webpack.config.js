@@ -3,6 +3,7 @@ const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const settings = require('./config')
+const webpack = require('webpack')
 
 let config = {
   devtool: '#eval-source-map',
@@ -14,11 +15,14 @@ let config = {
   },
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'src/dist')
   },
   module: {
     preLoaders: [],
     loaders: [{
+      test: /\.scss$/,
+      loader: 'style!css!sass'
+    },{
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
     }, {
@@ -62,10 +66,6 @@ let config = {
   vue: {
     autoprefixer: {
       browsers: ['last 2 Chrome versions']
-    },
-    loaders: {
-      sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
-      scss: 'vue-style-loader!css-loader!sass-loader'
     }
   }
 }

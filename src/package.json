@@ -1,0 +1,9 @@
+{
+	"name": "src",
+	"version": "1.0.0",
+	"main": "electron.js",
+	"license": "MIT",
+	"dependencies": {
+		"vue": "^2.1.3"
+	}
+}

@@ -4,6 +4,7 @@
 	</main>
 </template>
 <script>
+require('./style/base.scss')
 import vHeader from 'components/header/header.vue'
 export default {
 	components: {
